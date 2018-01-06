@@ -1,19 +1,43 @@
-<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
-<HTML>
-   <HEAD>
-      <TITLE>
-          Lokalizator
-      </TITLE>
-   </HEAD>
-<BODY>
-   
-	<h1> Lokalizator </h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #map {
+            height: 800px;
+            width: 75%;
+        }
+    </style>
+</head>
+<body>
+<h3>Lokalizator</h3>
+<form action="/" method="post">
+    <label for="adress">Wprowadź adres: </label>
+    <input id="adress" type="text" name="adress_field" value="">
+    <input type="submit" value="Wyszukaj">
+</form>
 
-    <form action="/" method="post">
-        <label for="adress">Wprowadź adres: </label>
-        <input id="adress" type="text" name="adress_field" value="">
-        <input type="submit" value="Wyszukaj">
-    </form>
 
-</BODY>
-</HTML>
+<div id="map"></div>
+
+
+
+<script>
+    function initMap() {
+        var lat = {{lat}};
+        var lng = {{lng}};
+        var uluru = {lat: lat, lng: lng};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 17,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzmM0iFRerjj8H8SjK_N0cgLnrPqsMzYQ&callback=initMap">
+</script>
+</body>
+</html>
