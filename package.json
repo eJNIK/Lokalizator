@@ -2,7 +2,7 @@
   "name": "projekt5",
   "version": "1.0.0",
   "description": "Projekt korzystajacy z Google API, do uzyskiwania długości, szerokości geograficznych",
-  "main": "index.js",
+  "main": "serwer.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/eJNIK/web_serwis_proj5#readme",
   "dependencies": {
+    "axios": "^0.17.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "hbs": "^4.0.1",

@@ -1,6 +1,6 @@
-const express = require('express'); //serwer
-const hbs = require('hbs');  //handlebars
-//const morgan = require('morgan'); //logi
+const express = require('express');
+const hbs = require('hbs');
+//const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const api1 = require('./api1.js');
 
