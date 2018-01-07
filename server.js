@@ -2,6 +2,8 @@ const express = require('express'); //serwer
 const hbs = require('hbs');  //handlebars
 //const morgan = require('morgan'); //logi
 const bodyParser = require('body-parser');
+const api1 = require('./api1.js');
+
 
 
 
@@ -11,23 +13,25 @@ const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
 let app = express();
 
+
 app.set('view engine', 'hbs');
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/', function(req,res){
     res.render('index.hbs',{
         lat: 53.0171647,
-        lng: 18.6030965
+        lng: 18.6030965,
     });
-
 });
 
-app.post('/', function(req,res){
-    res.render('index.hbs',{
-        lat: 54,
-        lng: 19
-    });
 
+app.post('/', function(req,res){
+    api1(req.body.adress_field).then(result => {
+    res.render('index.hbs', {
+        lat: result[0],
+        lng: result[1],
+    });
+    });
 });
 
 
