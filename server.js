@@ -2,7 +2,9 @@ const express = require('express');
 const hbs = require('hbs');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const fs = require('fs');
 const apis = require('./apis.js');
+
 
 
 var targetDate = new Date();
@@ -16,6 +18,9 @@ var localdate = new Date(timestamp * 1000);
 const PORT = process.env.PORT || 3000;
 let app = express();
 //klucz api's google AIzaSyCzmM0iFRerjj8H8SjK_N0cgLnrPqsMzYQ
+
+var accessLogStream = fs.createWriteStream((__dirname, 'server_logs.log'));
+app.use(morgan('combined', {stream: accessLogStream}));
 
 app.set('view engine', 'hbs');
 app.use(bodyParser.urlencoded({extended: true}));
