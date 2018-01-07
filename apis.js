@@ -9,8 +9,6 @@ var apis = async (address)=> {
         var lng;
         var elevation;
 
-
-
         await axios.get(url_address)
             .then(function(response){
                 addr = response.data.results[0].formatted_address;
